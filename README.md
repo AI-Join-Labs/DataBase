@@ -47,6 +47,8 @@ Here comes the fun part! Create the tables in your database and define the prima
 
 Use foreign keys to link related tables. Connections are essential in the data world!
 
+[Script File](https://github.com/AI-Join-Labs/DataBase/blob/main/scrip_tablas.sql)
+
 ## 🎉 Phase 4: Data Insertion
 ### 1. Data Generation
 
@@ -55,7 +57,7 @@ Get help from ChatGPT to generate at least 20 records per table. It’s like fil
 ### 2. Insert Data
 
 Now it’s time to add those records to your MySQL database! Use SQL commands to insert the data. Celebrate each insertion! 🎊
-[Script File](https://github.com/AI-Join-Labs/DataBase/blob/main/scrip_tablas.sql)
+
 
 ## 🔍 Phase 5: 10 Useful Queries
 ### 1. Basic Queries
