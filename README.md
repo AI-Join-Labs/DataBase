@@ -57,7 +57,7 @@ Get help from ChatGPT to generate at least 20 records per table. It’s like fil
 ### 2. Insert Data
 
 Now it’s time to add those records to your MySQL database! Use SQL commands to insert the data. Celebrate each insertion! 🎊
-
+[DataBase](https://github.com/AI-Join-Labs/DataBase/blob/main/Dump20240918.sql)
 
 ## 🔍 Phase 5: 10 Useful Queries
 ### 1. Basic Queries
