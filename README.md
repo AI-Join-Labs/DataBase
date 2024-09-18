@@ -62,14 +62,89 @@ Now it’s time to add those records to your MySQL database! Use SQL commands to
 
 Perform two simple queries. It’s like asking a friend what’s in the fridge! 🍕
 
+1.1_List all patients born after 2000
+```sql
+select * from Pacientes where Fecha_Nacimiento > '2000-01-01';
+``` 
+1.2_Find patients with a specific last name.
+```sql
+select * from Pacientes where Apellido like 'Perez';
+```
+
 ### 2. Filtering and Aggregation
 
 Run at least 4 queries applying filters and aggregation functions. Each query will be a different adventure! Use COUNT, SUM, AVG, MAX, and MIN to gather valuable insights.
+
+2.1_Count the total number of treatments per patient.
+```sql
+select ID_Paciente, count(ID_Tratamiento) from Tratamientos as TratamientosXPaciente group by ID_Paciente;
+```
+
+2.2_Calculate the average cost of treatments.
+```sql
+select avg(costo) from Tratamientos;
+```
+
+2.3_Get the nearest appointment date for a specific patient.
+```sql
+select max(Fecha), max(Hora), ID_Paciente from Citas group by ID_Paciente limit 1;
+```
+
+2.4_List all medications that contain a specific word in their name.
+```sql
+select Nombre from Medicamentos where Nombre like '%meta%';
+```
 
 ### 3. Sorting and Joins
 
 Execute at least 4 queries that sort results and join tables. It’s like gathering all your characters for a big party! Make sure to use each type of JOIN (INNER, LEFT, RIGHT, FULL).
 
+3.1_Count the number of appointments scheduled per doctor and filter by a minimum number of appointments.
+```sql
+select m.Nombre, m.Apellido, count(c.Fecha) from Citas c
+left join Medicos m on c.ID_Medico = m.ID_Medico
+group by c.ID_Medico having count(c.Fecha) >= 5;
+```
+
+3.2_Obtain the total sum of treatment costs per patient.
+```sql
+select p.Nombre, p.Apellido, sum(t.Costo) as CostoXTratamiento from Pacientes p
+left join Tratamientos t on p.ID_Paciente = t.ID_Paciente group by p.ID_Paciente;
+```
+
+3.3_List patients ordered by date of birth, from youngest to oldest.
+```sql
+select * from Pacientes order by Fecha_Nacimiento desc;
+```
+
+3.4_Find doctors who care for patients with specific allergies.
+```sql
+select Medicos.Nombre as Nombre_Medico, Medicos.Apellido as Apellido_Medico,
+Pacientes.Nombre as Nombre_Paciente, Pacientes.Apellido as Apellido_Paciente,
+Historial_Medico.Alergias from Medicos
+left join Citas on Medicos.ID_Medico = Citas.ID_Medico
+left join Pacientes on Citas.ID_Paciente = Pacientes.ID_Paciente
+left join Historial_Medico on Pacientes.ID_Paciente = Historial_Medico.ID_Paciente
+where Historial_Medico.Alergias != 'Ninguna';
+```
+
+3.5_Listar tratamientos y la cantidad de medicamentos asociados.
+```sql
+select t.Descripcion, count(m.Nombre) as CantidadMedicamentos from Medicamentos m
+inner join Tratamientos_Medicamentos tratM on m.ID_Medicamento = tratM.ID_Medicamento
+inner join Tratamientos t on t.ID_Tratamiento = tratM.ID_Tratamiento group by Descripcion;
+```
+
+
+
 ## 🎉 Congratulations!
 
 You've completed the journey of creating a relational database. Now you have a world full of well-organized data ready to explore. May your adventure continue, and may your queries always bring you the results you seek! 🚀✨
+
+
+
+
+
+
+
+
