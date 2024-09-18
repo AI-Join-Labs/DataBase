@@ -130,7 +130,7 @@ left join Historial_Medico on Pacientes.ID_Paciente = Historial_Medico.ID_Pacien
 where Historial_Medico.Alergias != 'Ninguna';
 ```
 
-3.5_Listar tratamientos y la cantidad de medicamentos asociados.
+3.5_List treatments and the number of associated medications.
 ```sql
 select t.Descripcion, count(m.Nombre) as CantidadMedicamentos from Medicamentos m
 inner join Tratamientos_Medicamentos tratM on m.ID_Medicamento = tratM.ID_Medicamento
