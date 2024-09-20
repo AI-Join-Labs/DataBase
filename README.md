@@ -79,7 +79,8 @@ Run at least 4 queries applying filters and aggregation functions. Each query wi
 
 2.1_Count the total number of treatments per patient.
 ```sql
-select ID_Paciente, count(ID_Tratamiento) from Tratamientos as TratamientosXPaciente group by ID_Paciente;
+select ID_Paciente, count(ID_Tratamiento) from Tratamientos as TratamientosXPaciente
+group by ID_Paciente;
 ```
 
 2.2_Calculate the average cost of treatments.
